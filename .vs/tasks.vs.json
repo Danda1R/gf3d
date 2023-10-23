@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-gf3d",
+      "appliesTo": "/",
+      "type": "launch"
+    }
+  ]
+}
