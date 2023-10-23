@@ -36,8 +36,7 @@ void player_think(Entity *self)
     Vector3D right = {0};
     Vector2D w,mouse;
     int mx,my;
-    Uint32 buttons;
-    buttons = SDL_GetRelativeMouseState(&mx, &my);
+    SDL_GetRelativeMouseState(&mx,&my);
     const Uint8 * keys;
     keys = SDL_GetKeyboardState(NULL); // get the keyboard state for this frame
 
@@ -75,13 +74,6 @@ void player_think(Entity *self)
     
     if (mouse.x != 0)self->rotation.z -= (mouse.x * 0.001);
     if (mouse.y != 0)self->rotation.x += (mouse.y * 0.001);
-
-    if (self->cooldown <= 0) {
-        if (buttons) {
-            projectile_new(self, "models/soul_reaver.model", self->position, forward, 10, 1, 0);
-            self->cooldown = 100;
-        }
-    }
 
     if (keys[SDL_SCANCODE_F3])
     {

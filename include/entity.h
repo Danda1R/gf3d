@@ -46,10 +46,8 @@ typedef struct Entity_S
     Vector3D    rotation;
     
     Uint32      health;     /**<entity dies when it reaches zero*/
-    float       cooldown;
     // WHATEVER ELSE WE MIGHT NEED FOR ENTITIES
     struct Entity_S *target;    /**<entity to target for weapons / ai*/
-    struct Entity_S *parent;    /**<entity to target for weapons / ai*/
     
     void *customData;   /**<IF an entity needs to keep track of extra data, we can do it here*/
 }Entity;
@@ -99,14 +97,5 @@ void entity_think_all();
  * @brief run the update functions for ALL active entities
  */
 void entity_update_all();
-
-/**
- * @brief check if two boxes are colliding
- * @param self the entity in question
- * @param other the other entity in question
- */
-int entity_collide_check(Entity* self, Entity* other);
-
-Entity* entity_get_collision_entity(Entity* self);
 
 #endif

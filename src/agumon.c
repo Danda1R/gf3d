@@ -7,12 +7,6 @@ void agumon_update(Entity *self);
 
 void agumon_think(Entity *self);
 
-void agumon_damage(Entity* self, float damage, Entity* inflictor) {
-    if (!self)return;
-    self->health;
-    if (self->health <= 0)entity_free(self);
-}
-
 Entity *agumon_new(Vector3D position)
 {
     Entity *ent = NULL;

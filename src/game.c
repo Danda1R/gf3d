@@ -51,33 +51,24 @@ int main(int argc,char *argv[])
     gfc_input_init("config/input.cfg");
     slog("gf3d begin");
     gf3d_vgraphics_init("config/setup.cfg");
-    slog("gf3d test1");
     gf2d_font_init("config/font.cfg");
-    slog("gf3d test2");
     gf2d_draw_manager_init(1000);
-    slog("gf3d test3");
     
     slog_sync();
-    slog("gf3d test4");
     
     entity_system_init(1024);
-    slog("gf3d test5");
     
     mouse = gf2d_sprite_load("images/pointer.png",32,32, 16);
-    slog("gf3d test6");
     
     
     agu = agumon_new(vector3d(0 ,0,0));
     if (agu)agu->selected = 1;
     w = world_load("config/testworld.json");
-    slog("gf3d test7");
     
     SDL_SetRelativeMouseMode(SDL_TRUE);
     slog_sync();
     gf3d_camera_set_scale(vector3d(1,1,1));
     player_new(vector3d(-50,0,0));
-
-    slog("gf3d test8");
     
     for (a = 0; a < 100; a++)
     {

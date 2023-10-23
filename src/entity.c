@@ -9,7 +9,6 @@ typedef struct
 {
     Entity *entity_list;
     Uint32  entity_count;
-    Model   *cube;
     
 }EntityManager;
 
@@ -118,34 +117,6 @@ void entity_think_all()
     }
 }
 
-
-int entity_collide_check(Entity *self, Entity *other) {
-    Box A, B;
-    if ((!self) || (!other)) {
-        slog("missing entity data for collision check");
-        return 0;
-    }
-    A = self->bounds;
-    B = other->bounds;
-    return gfc_box_overlap(A, B);
-}
-
-Entity* entity_get_collision_entity(Entity* self) {
-    int i, c;
-    if (!self) {
-        slog("no self provided");
-        return NULL;
-    }
-    for (i = 0; i < entity_manager.entity_count; i++) {
-        if (!entity_manager.entity_list[i]._inuse)continue;
-        if (self == &entity_manager.entity_list[i])continue;
-        if (self->parent == &entity_manager.entity_list[i])continue;
-        if (entity_collide_check(&self, &entity_manager.entity_list[i])) {
-            return &entity_manager.entity_list[i];
-        }
-    }
-    return NULL;
-}
 
 void entity_update(Entity *self)
 {

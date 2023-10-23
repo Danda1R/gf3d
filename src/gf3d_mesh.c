@@ -64,7 +64,6 @@ void gf3d_mesh_init(Uint32 mesh_max)
     gf3d_mesh.mesh_list = gfc_allocate_array(sizeof(Mesh),mesh_max);
     
     gf3d_mesh_get_attribute_descriptions(&count);
-    slog("Work1");
     gf3d_mesh.pipe = gf3d_pipeline_create_from_config(
         gf3d_vgraphics_get_default_logical_device(),
         "config/model_pipeline.cfg",
@@ -75,7 +74,7 @@ void gf3d_mesh_init(Uint32 mesh_max)
         count,
         sizeof(MeshUBO)
     );
-    slog("Work2");
+
     gf3d_mesh.sky_pipe = gf3d_pipeline_create_from_config(
         gf3d_vgraphics_get_default_logical_device(),
         "config/sky_pipeline.cfg",
@@ -86,7 +85,7 @@ void gf3d_mesh_init(Uint32 mesh_max)
         count,
         sizeof(SkyUBO)
     );
-    slog("Work3");
+
         gf3d_mesh.highlight_pipe = gf3d_pipeline_create_from_config(
         gf3d_vgraphics_get_default_logical_device(),
         "config/highlight_pipeline.cfg",

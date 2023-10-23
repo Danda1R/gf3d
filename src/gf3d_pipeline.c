@@ -417,13 +417,10 @@ Pipeline *gf3d_pipeline_create_from_config(
         gf3d_pipeline_free(pipe);
         return NULL;
     }
-
-    slog("Testing123");
     
     pipe->uboList = gf3d_uniform_buffer_list_new(device,bufferSize,draw_calls,gf3d_swapchain_get_swap_image_count());
     
     if (__DEBUG)slog("pipeline created from file '%s'",configFile);
-    slog("Testing456");
     return pipe;
 }
 
@@ -568,7 +565,6 @@ void gf3d_pipeline_create_descriptor_sets(Pipeline *pipe)
         pipe->descriptorSets[i] = (VkDescriptorSet *)gfc_allocate_array(sizeof(VkDescriptorSet),pipe->descriptorSetCount);
         allocInfo.descriptorPool = pipe->descriptorPool[i];
         slog("allocating descriptor sets");
-        slog("Number in loop");
         if ((r = vkAllocateDescriptorSets(pipe->device, &allocInfo, pipe->descriptorSets[i])) != VK_SUCCESS)
         {
             slog("failed to allocate descriptor sets!");
@@ -579,9 +575,7 @@ void gf3d_pipeline_create_descriptor_sets(Pipeline *pipe)
             free(layouts);
             return;
         }
-        slog("Number in loop 1");
     }
-    slog("Number in loop 2");
 }
 
 void gf3d_pipeline_create_basic_model_descriptor_set_layout(Pipeline *pipe)
